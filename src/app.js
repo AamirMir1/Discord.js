@@ -26,4 +26,11 @@ bot.on("messageCreate", (message) => {
   }
 });
 
+bot.on("interactionCreate", (interaction) => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === "ping") {
+    interaction.reply("Pong!");
+  }
+});
 bot.login(process.env.DISCORD_TOKEN);
