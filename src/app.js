@@ -32,5 +32,11 @@ bot.on("interactionCreate", (interaction) => {
   if (interaction.commandName === "ping") {
     interaction.reply("Pong!");
   }
+  if (interaction.commandName === "sum") {
+    const number1 = interaction.options.get("number1")?.value;
+    const number2 = interaction.options.get("number2")?.value;
+
+    interaction.reply(`${number1 + number2} is the sum of your numbers`);
+  }
 });
 bot.login(process.env.DISCORD_TOKEN);
