@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits } from "discord.js";
+import { Client, GatewayIntentBits, EmbedBuilder } from "discord.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -37,6 +37,38 @@ bot.on("interactionCreate", (interaction) => {
     const number2 = interaction.options.get("number2")?.value;
 
     interaction.reply(`${number1 + number2} is the sum of your numbers`);
+  }
+  if (interaction.commandName === "embeds") {
+    const exampleEmbed = new EmbedBuilder()
+      .setColor("Random")
+      .setTitle("Lucifer's Title")
+      .setURL("https://discord.js.org/")
+      .setAuthor({
+        name: "Lucifer is the author",
+        iconURL: "https://i.imgur.com/AfFp7pu.png",
+        url: "https://discord.js.org",
+      })
+      .setDescription("Hated By Many Defeated By None")
+      .setThumbnail("https://i.imgur.com/AfFp7pu.png")
+      .addFields(
+        { name: "Regular", value: "Some value here" },
+        { name: "\u200B", value: "\u200B" },
+        { name: "Inline field title", value: "Some value here", inline: true },
+        { name: "Inline field title", value: "Some value here", inline: true },
+      )
+      .addFields({
+        name: "Inline field title",
+        value: "Some value here",
+        inline: true,
+      })
+      .setImage("https://i.imgur.com/AfFp7pu.png")
+      .setTimestamp()
+      .setFooter({
+        text: "Some footer text here",
+        iconURL: "https://i.imgur.com/AfFp7pu.png",
+      });
+
+    interaction.channel.send({ embeds: [exampleEmbed] });
   }
 });
 bot.login(process.env.DISCORD_TOKEN);

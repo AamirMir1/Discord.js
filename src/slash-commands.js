@@ -9,6 +9,10 @@ const commands = [
     description: "This would reply pong!",
   },
   {
+    name: "embeds",
+    description: "This is embed",
+  },
+  {
     name: "sum",
     description: "This will sum two numbers",
     options: [
